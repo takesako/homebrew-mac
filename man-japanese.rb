@@ -4,7 +4,7 @@
 class ManJapanese < Formula
   desc ""
   homepage ""
-  url "http://linuxjm.osdn.jp/man-pages-ja-20231115.tar.gz"
+  url "https://linuxjm.sourceforge.io/man-pages-ja-20231115.tar.gz"
   sha256 "ce8bf9d8e6642506a20f82d462ec6de14b5689194df46dacdc5d10bd0a5f5b17"
   license ""
 
