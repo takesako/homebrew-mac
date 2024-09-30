@@ -29,8 +29,8 @@ class ManJapanese < Formula
 
     # Handle man.conf
     cp("/etc/man.conf", buildpath/"manj.conf")
-    inreplace "manj.conf", audit_result: false do |s|
-      s.gsub!(/^(JNROFF|PAGER|BROWSER)\s/, '# \0')
+    inreplace "manj.conf" do |s|
+      s.gsub!(/^(JNROFF|PAGER|BROWSER)\s/, '# \0', audit_result: false)
       s.gsub!(/\z/, "\nJNROFF		#{Formula['groff'].opt_bin}/groff -Dutf8 -Tutf8 -mandoc -mja -E")
       s.gsub!(/\z/, "\nPAGER		/usr/bin/less -isr")
       s.gsub!(/\z/, "\nBROWSER		/usr/bin/less -isr")
