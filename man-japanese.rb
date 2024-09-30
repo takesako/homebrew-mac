@@ -29,6 +29,9 @@ class ManJapanese < Formula
 
     # Handle man.conf
     cp("/etc/man.conf", buildpath/"manj.conf")
+    system("grep -q '^JNROFF'  manj.conf || echo 'JNROFF  groff'>> manj.conf")
+    system("grep -q '^PAGER'   manj.conf || echo 'PAGER   less' >> manj.conf")
+    system("grep -q '^BROWSER' manj.conf || echo 'BROWSER less' >> manj.conf")
     inreplace "manj.conf" do |s|
       s.gsub!(/^JNROFF.+$/, "JNROFF		#{Formula["groff"].opt_bin}/groff -Dutf8 -Tutf8 -mandoc -mja -E")
       s.gsub!(/^PAGER.+$/, "PAGER		/usr/bin/less -isr")
